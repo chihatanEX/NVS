@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | 株式会社NVS</title>
+    <style>
+        /* --- 基本設定（ホームと統一） --- */
+        body { font-family: sans-serif; margin: 0; padding-top: 70px; background-color: #f9f9f9; color: #333; line-height: 1.6; }
+
+        /* --- ヘッダー（ロゴスタイル統一） --- */
+        header {
+            background: #1a1a1a; color: white; position: fixed;
+            top: 0; width: 100%; height: 70px; z-index: 1000;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .logo { 
+            display: flex; 
+            align-items: baseline; 
+            letter-spacing: 3px; 
+            color: white;
+            text-decoration: none;
+        }
+        .co-text { font-size: 0.8rem; margin-right: 5px; font-weight: normal; }
+        .nvs-text { font-size: 1.8rem; font-weight: bold; }
+
+        /* --- ハンバーガーメニュー --- */
+        #menu-check { display: none; }
+        .menu-icon { position: absolute; right: 20px; cursor: pointer; z-index: 1200; width: 30px; }
+        .menu-icon span { display: block; width: 100%; height: 3px; background: white; margin: 6px 0; transition: 0.3s; }
+        .nav-menu {
+            position: fixed; top: 0; right: -100%;
+            width: 280px; height: 100vh; background: #1a1a1a; padding-top: 80px;
+            list-style: none; margin: 0; transition: 0.5s; z-index: 1100;
+        }
+        .nav-menu li a { display: block; padding: 20px 30px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .nav-menu li a:hover { background: #ff8c00; padding-left: 40px; }
+        #menu-check:checked ~ .nav-menu { right: 0; }
+
+        /* --- メインコンテンツ --- */
+        .container { max-width: 900px; margin: auto; padding: 60px 20px; }
+        
+        .page-title { text-align: center; margin-bottom: 40px; }
+        .page-title h2 { font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 15px; font-weight: bold; }
+        .page-title .line { width: 40px; height: 4px; background: #ff8c00; margin: 0 auto; }
+
+        /* --- フォーム埋め込みエリア --- */
+        .form-wrapper {
+            background: white;
+            padding: 20px;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        iframe {
+            width: 100%; /* 横幅いっぱいに広げる */
+            min-height: 800px; /* フォームの長さに合わせて調整してください */
+            border: none;
+        }
+
+        /* 戻るリンク */
+        .footer-nav { text-align: center; margin: 40px 0; }
+        .btn-home { text-decoration: none; color: #888; font-size: 0.9rem; transition: 0.3s; }
+        .btn-home:hover { color: #ff8c00; }
+
+        footer { background: #1a1a1a; color: #888; text-align: center; padding: 40px 20px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="../index.html" class="logo">
+        <span class="co-text">株式会社</span><span class="nvs-text">NVS</span>
+    </a>
+    <input type="checkbox" id="menu-check">
+    <label for="menu-check" class="menu-icon"><span></span><span></span><span></span></label>
+    <ul class="nav-menu">
+        <li><a href="../index.html">ホーム</a></li>
+        <li><a href="../service/">事業内容</a></li>
+        <li><a href="../recruit/">採用情報</a></li>
+        <li><a href="index.html">お問い合わせ</a></li>
+    </ul>
+</header>
+
+<main class="container">
+    <div class="page-title">
+        <h2>CONTACT</h2>
+        <div class="line"></div>
+        <p style="font-size: 0.9rem; color: #666; margin-top: 20px;">
+            お問い合わせは以下のフォームより承っております。<br>必要事項をご記入の上、送信してください。
+        </p>
+    </div>
+
+    <div class="form-wrapper">
+        <p style="color: #ccc; padding: 50px 0;">（ここにGoogleフォームが表示されます）</p>
+    </div>
+
+    <div class="footer-nav">
+        <a href="../" class="btn-home">← ホームへ戻る</a>
+    </div>
+</main>
+
+<footer><p>&copy; 2026 株式会社NVS. All Rights Reserved.</p></footer>
+
+</body>
+</html>

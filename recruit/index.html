@@ -8,12 +8,42 @@
         /* --- 基本設定 --- */
         body { font-family: sans-serif; margin: 0; padding-top: 100px; background-color: #f9f9f9; color: #333; line-height: 1.6; }
         
+
+        /* --- ヘッダー（ロゴスタイル統一） --- */
         header {
-            background: #2c2c2c; color: white; position: fixed;
+            background: #1a1a1a; color: white; position: fixed;
             top: 0; width: 100%; height: 70px; z-index: 1000;
             display: flex; align-items: center; justify-content: center;
         }
-        .logo a { font-size: 1.3rem; font-weight: bold; letter-spacing: 2px; color: white; text-decoration: none; }
+        .logo { 
+            display: flex; 
+            align-items: baseline; 
+            letter-spacing: 3px; 
+            color: white;
+            text-decoration: none;
+        }
+        .co-text {
+            font-size: 0.8rem;
+            margin-right: 5px;
+            font-weight: normal;
+        }
+        .nvs-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        #menu-check { display: none; }
+        .menu-icon { position: absolute; right: 20px; cursor: pointer; z-index: 1200; width: 30px; }
+        .menu-icon span { display: block; width: 100%; height: 3px; background: white; margin: 6px 0; transition: 0.3s; }
+        .nav-menu {
+            position: fixed; top: 0; right: -100%;
+            width: 280px; height: 100vh; background: #1a1a1a; padding-top: 80px;
+            list-style: none; margin: 0; transition: 0.5s; z-index: 1100;
+        }
+        .nav-menu li a { display: block; padding: 20px 30px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .nav-menu li a:hover { background: #ff8c00; padding-left: 40px; }
+        #menu-check:checked ~ .nav-menu { right: 0; }
+
 
         /* --- メインコンテンツ --- */
         .container { max-width: 900px; margin: auto; padding: 20px; }
@@ -38,6 +68,16 @@
             color: white;
             padding: 5px 20px;
             border-radius: 2px 2px 0 0;
+        }
+
+        .co-text {
+            font-size: 1.0rem; /* 株式会社を小さく */
+            margin-right: 5px;
+            font-weight: normal;
+        }
+        .nvs-text {
+            font-size: 1.8rem; /* NVSをトップと同じサイズに */
+            font-weight: bold;
         }
 
         /* --- 求人カード --- */
@@ -70,87 +110,123 @@
             .btn-recruit { margin-top: 20px; width: 100%; text-align: center; box-sizing: border-box; }
             .category-header h3 { font-size: 1.2rem; }
         }
+
+        /* 戻るリンク */
+        .footer-nav { text-align: center; margin: 60px 0; }
+        .btn-home { text-decoration: none; color: #888; font-size: 0.9rem; transition: 0.3s; }
+        .btn-home:hover { color: #ff8c00; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo"><a href="../">株式会社NVS</a></div>
-    </header>
+<header>
+    <div class="logo">
+        <span class="co-text">株式会社</span><span class="nvs-text">NVS</span>
+    </div>
+    <input type="checkbox" id="menu-check">
+    <label for="menu-check" class="menu-icon"><span></span><span></span><span></span></label>
+<ul class="nav-menu">
+    <li><a href="../index.html">ホーム</a></li>
+    <li><a href="../service/">事業内容</a></li>
+    <li><a href="index.html">採用情報</a></li>
+    <li><a href="../contact/">お問い合わせ</a></li>
+</ul>
+</header>
 
-    <main class="container">
-        <div class="page-title">
-            <h2>RECRUIT</h2>
-            <div class="line"></div>
-            <p></p>
+<main class="container">
+    <div class="page-title">
+        <h2>RECRUIT</h2>
+        <div class="line"></div>
+        <p style="font-size: 1.1rem; color: #333; font-weight: bold; margin-top: 25px;">
+            業務拡大につき、新しい仲間を募集しています。
+        </p>
+        <p style="font-size: 0.95rem; color: #666; max-width: 700px; margin: 15px auto 0; text-align: center; line-height: 1.8;">
+            株式会社NVSでは、現在ドライバーおよび助手を募集しております。<br>
+            個室寮を完備し、地方からの応募や新生活のスタートもサポート可能な環境です。<br>
+            募集要項をご確認の上、専用フォームよりお気軽にお問い合わせください。
+        </p>
+    </div>
+
+    <section class="category-section">
+        <div class="category-header">
+            <h3>中途採用</h3>
+        </div>
+        
+        <div class="recruit-card">
+            <div class="recruit-info">
+                <h4>◎個室寮◎トラックドライバー大量募集</h4>
+                <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
+                <p><strong>勤務地：</strong>千葉県千葉市</p>
+            </div>
+            <a href="https://docs.google.com/forms/..." class="btn-recruit">応募フォームへ</a>
         </div>
 
-        <section class="category-section">
-            <div class="category-header">
-                <h3>中途採用</h3>
+        <div class="recruit-card">
+            <div class="recruit-info">
+                <h4>◎個室寮◎トラックドライバー大量募集</h4>
+                <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
+                <p><strong>勤務地：</strong>千葉県柏市</p>
             </div>
+            <a href="https://docs.google.com/forms/..." class="btn-recruit">応募フォームへ</a>
+        </div>
+
+    </section>
+
+    <section class="category-section">
+        <div class="category-header">
+            <h3>新卒採用</h3>
+        </div>
             
-            <div class="recruit-card">
-                <div class="recruit-info">
-                    <h4>◎個室寮◎トラックドライバー大量募集</h4>
-                    <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
-                    <p><strong>勤務地：</strong>千葉県千葉市</p>
-                </div>
-                <a href="https://docs.google.com/forms/..." class="btn-recruit">応募フォームへ</a>
+        <div class="recruit-card">
+            <div class="recruit-info">
+                <h4>◎個室寮◎トラックドライバー大量募集</h4>
+                <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
+                <p><strong>勤務地：</strong>千葉県千葉市</p>
             </div>
-        </section>
+            <a href="https://docs.google.com/forms/..." class="btn-recruit">応募フォームへ</a>
+        </div>
 
-        <section class="category-section">
-            <div class="category-header">
-                <h3>新卒採用</h3>
+        <div class="recruit-card">
+            <div class="recruit-info">
+                <h4>◎個室寮◎トラックドライバー大量募集</h4>
+                <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
+                <p><strong>勤務地：</strong>千葉県柏市</p>
             </div>
-            
-            <div class="recruit-card">
-                <div class="recruit-info">
-                    <h4>◎個室寮◎トラックドライバー大量募集</h4>
-                    <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
-                    <p><strong>勤務地：</strong>千葉県千葉市</p>
-                </div>
-                <a href="https://docs.google.com/forms/..." class="btn-recruit">応募フォームへ</a>
-            </div>
+            <a href="https://docs.google.com/forms/..." class="btn-recruit">応募フォームへ</a>
+        </div>
+    </section>
 
-            <div class="recruit-card">
-                <div class="recruit-info">
-                    <h4>◎個室寮◎トラックドライバー大量募集</h4>
-                    <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
-                    <p><strong>勤務地：</strong>千葉県柏市</p>
-                </div>
-                <a href="https://docs.google.com/forms/..." class="btn-recruit">応募フォームへ</a>
-            </div>
-        </section>
+    <section class="category-section">
+        <div class="category-header">
+            <h3>アルバイト・パート</h3>
+        </div>
 
-        <section class="category-section">
-            <div class="category-header">
-                <h3>アルバイト・パート</h3>
+        <div class="recruit-card">
+            <div class="recruit-info">
+                <h4>ドライバー助手募集!未経験OK</h4>
+                <p><strong>給与：</strong>日給 11,000円〜13,000円</p>
+                <p><strong>勤務地：</strong>千葉県千葉市</p>
+                <p><strong>時間：</strong>07:30～16:30</p>
             </div>
+            <a href="#" class="btn-recruit">応募フォームへ</a>
+        </div>
 
-            <div class="recruit-card">
-                <div class="recruit-info">
-                    <h4>【駅近社員寮】軽作業スタッフ</h4>
-                    <p><strong>給与：</strong>日給 11,000円〜15,000円</p>
-                    <p><strong>勤務地：</strong>千葉県千葉市</p>
-                    <p><strong>時間：</strong>08:00～17:00</p>
-                </div>
-                <a href="#" class="btn-recruit">応募フォームへ</a>
+        <div class="recruit-card">
+            <div class="recruit-info">
+                <h4>配送ドライバー募集!</h4>
+                <p><strong>給与：</strong>日給 12,000円〜15,000円</p>
+                <p><strong>勤務地：</strong>東京都江東区</p>
+                <p><strong>時間：</strong>07:30～16:30</p>
             </div>
+            <a href="#" class="btn-recruit">応募フォームへ</a>
+        </div>
+    </section>
 
-            <div class="recruit-card">
-                <div class="recruit-info">
-                    <h4>事務員さん募集！</h4>
-                    <p><strong>給与：</strong>月給 205,000円〜205,000円</p>
-                    <p><strong>勤務地：</strong>千葉県千葉市</p>
-                    <p><strong>時間：</strong>09:00～18:00</p>
-                </div>
-                <a href="#" class="btn-recruit">応募フォームへ</a>
-            </div>
-        </section>
+    <div class="footer-nav">
+        <a href="../" class="btn-home">← ホームへ戻る</a>
+    </div>
         
-    </main>
+</main>
 
 </body>
 </html>

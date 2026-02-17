@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>株式会社NVS | 運送・建設・自動車・バルーン装飾</title>
+    <title>株式会社NVS | 千葉の運送・物流プロフェッショナル</title>
     <style>
         /* --- 基本設定 --- */
-        html { scroll-behavior: smooth; }
-        body { font-family: "Helvetica Neue", Arial, sans-serif; margin: 0; padding-top: 70px; background-color: #f4f4f4; color: #333; }
+        body { font-family: sans-serif; margin: 0; padding-top: 70px; background-color: #f9f9f9; color: #333; line-height: 1.6; }
 
         /* --- ヘッダー --- */
         header {
@@ -15,7 +14,15 @@
             top: 0; width: 100%; height: 70px; z-index: 1000;
             display: flex; align-items: center; justify-content: center;
         }
-        .logo { font-size: 1.4rem; font-weight: bold; letter-spacing: 3px; }
+        .logo { 
+            display: flex; 
+            align-items: baseline; 
+            letter-spacing: 3px; 
+            color: white;
+            text-decoration: none;
+        }
+        .co-text { font-size: 1.0rem; margin-right: 5px; font-weight: normal; }
+        .nvs-text { font-size: 1.8rem; font-weight: bold; }
 
         /* --- ハンバーガーメニュー --- */
         #menu-check { display: none; }
@@ -33,61 +40,38 @@
         /* --- メインビジュアル --- */
         .hero {
             position: relative; width: 100%; height: 500px;
-            background: url('Untitled.jpg') no-repeat center center / cover;
+            background: url('34209409_m.jpg') no-repeat center center / cover;
             display: flex; align-items: center; justify-content: center; color: white; text-align: center;
         }
         .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); }
         .hero-content { position: relative; z-index: 1; padding: 0 20px; }
         .hero-content h2 { font-size: 2.5rem; font-weight: bold; margin: 0; line-height: 1.4; }
 
-        /* --- 画像の下に沿って端まで表示する枠 --- */
-        .hero-tag-full {
-            width: 100%;
-            background: #fff;
-            border-bottom: 5px solid #ff8c00;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        .hero-tag-box {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 25px 0;
-        }
-        .hero-tag-box div {
-            flex: 1;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            color: #1a1a1a;
-        }
-        .hero-tag-box div:not(:last-child) {
-            border-right: 1px solid #ddd;
-        }
+        /* --- 画像の下の帯（運送の詳細に書き換え） --- */
+        .hero-tag-full { width: 100%; background: #fff; border-bottom: 5px solid #ff8c00; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .hero-tag-box { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; padding: 25px 0; }
+        .hero-tag-box div { flex: 1; text-align: center; font-weight: bold; font-size: 1.1rem; letter-spacing: 1px; color: #1a1a1a; }
+        .hero-tag-box div:not(:last-child) { border-right: 1px solid #ddd; }
 
-        /* --- 事業理念 (PHILOSOPHY) --- */
+        /* --- 事業理念（運送特化） --- */
         .philosophy { background: #f4f4f4; padding: 100px 20px 60px; text-align: center; }
         .philosophy-inner { max-width: 800px; margin: 0 auto; }
         .philosophy span { color: #ff8c00; font-weight: bold; letter-spacing: 2px; font-size: 0.9rem; }
         .philosophy h2 { font-size: 2rem; margin: 25px 0; letter-spacing: 2px; line-height: 1.5; }
-        .philosophy p { line-height: 2.2; color: #666; font-size: 1rem; text-align: left; }
+        .philosophy p { line-height: 2.2; color: #666; font-size: 1rem; text-align: center; }
 
-        /* --- コンテンツエリア共通 --- */
+        /* --- コンテンツエリア --- */
         .container { max-width: 900px; margin: auto; padding: 60px 20px; }
         .section-title { text-align: center; margin-bottom: 30px; }
         .section-title h2 { font-size: 1.8rem; letter-spacing: 4px; margin: 0; font-weight: bold; }
         .section-title .line { width: 40px; height: 4px; background: #ff8c00; margin: 15px auto; }
 
-        /* 実績 (WORKS) */
         .works-list { background: white; padding: 20px; margin-bottom: 50px; border: 1px solid #eee; }
         .works-item { display: flex; border-bottom: 1px solid #eee; padding: 18px 0; font-size: 0.95rem; }
         .works-item:last-child { border-bottom: none; }
         .works-date { width: 110px; color: #888; }
         .works-text { flex: 1; font-weight: 500; }
 
-        /* ボタン */
         .nav-card {
             position: relative; display: block; padding: 40px 20px;
             text-align: center; background: #fff; color: #1a1a1a;
@@ -100,14 +84,12 @@
         .nav-card:hover::after { transform: scaleX(1); }
         .nav-card h3 { margin: 0; font-size: 1.4rem; letter-spacing: 2px; }
 
-        /* 会社概要 (COMPANY) */
         .company-table { width: 100%; border-collapse: collapse; background: white; border: 1px solid #eee; margin-bottom: 80px; }
         .company-table th, .company-table td { padding: 20px; border-bottom: 1px solid #eee; text-align: left; }
         .company-table th { background: #fafafa; width: 30%; color: #666; font-size: 0.9rem; font-weight: bold; }
 
         footer { background: #1a1a1a; color: #888; text-align: center; padding: 40px 20px; font-size: 0.8rem; }
 
-        /* スマホ対応 */
         @media (max-width: 768px) {
             .hero-content h2 { font-size: 1.8rem; }
             .hero-tag-box { flex-direction: column; padding: 10px 0; }
@@ -119,15 +101,14 @@
 <body>
 
 <header>
-    <div class="logo">
+    <a href="index.html" class="logo">
         <span class="co-text">株式会社</span><span class="nvs-text">NVS</span>
-    </div>
+    </a>
     <input type="checkbox" id="menu-check">
     <label for="menu-check" class="menu-icon"><span></span><span></span><span></span></label>
     <ul class="nav-menu">
         <li><a href="index.html">ホーム</a></li>
         <li><a href="service/">事業内容</a></li>
-        <li><a href="price/">料金案内</a></li>
         <li><a href="recruit/">採用情報</a></li>
         <li><a href="contact/">お問い合わせ</a></li>
     </ul>
@@ -135,50 +116,83 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h2>運ぶ、創る、彩る。<br>そのすべてに、プロの誇りと情熱を。</h2>
+        <h2>届けるのは、安心と信頼。<br>千葉から全国へ、確かな物流を。</h2>
     </div>
 </section>
 
 <div class="hero-tag-full">
     <div class="hero-tag-box">
-        <div>運送事業</div>
-        <div>建設事業</div>
-        <div>アートバルーン事業</div>
-        <div>自動車事業</div>
+        <div>一般貨物輸送</div>
+        <div>引越事業</div>
+        <div>産廃収集運搬</div>
+        <div>物流ソリューション</div>
     </div>
 </div>
 
 <section class="philosophy">
     <div class="philosophy-inner">
         <span>PHILOSOPHY</span>
-        <h2>運ぶ、創る、彩る。<br>現場から、日常を支え、未来を照らす。</h2>
-        <p>
-            株式会社NVSは、運送・建設・自動車・バルーン装飾という多角的なサービスを展開しています。一見異なるこれらの事業を繋いでいるのは、「お客様の困ったを解決し、期待を超える価値を届けたい」という一貫した想いです。現場の安全を支え、物流を動かし、時には華やかな演出で笑顔を届ける。私たちは、社会のインフラと人々の暮らしの両面をサポートし続けます。
-        </p>
+        <h2>「運ぶ」の先にある、<br>笑顔と満足のために。</h2>
+        <div class="philosophy-text">
+            <p>
+                株式会社NVSは、運送・物流のスペシャリスト集団です。
+                単にお荷物を運ぶだけでなく、お客様の大切な想いも一緒に届ける。そのために、安全第一の徹底と、丁寧な作業、そして柔軟な対応力を磨き続けてきました。千葉を拠点に、地域社会のインフラを支える誇りを胸に、私たちは今日も走り続けます。
+            </p>
+        </div>
     </div>
 </section>
 
+<style>
+    /* 追加・修正するスタイル */
+    .philosophy { background: #f4f4f4; padding: 100px 20px 80px; text-align: center; }
+    .philosophy-inner { max-width: 800px; margin: 0 auto; }
+    .philosophy span { color: #ff8c00; font-weight: bold; letter-spacing: 2px; font-size: 0.9rem; }
+    .philosophy h2 { font-size: 2rem; margin: 25px 0; letter-spacing: 2px; line-height: 1.5; }
+    
+    /* 文章の流し込み設定を調整 */
+    .philosophy-text {
+        text-align: justify;    /* 両端揃えにして端を綺麗にする */
+        text-justify: inter-character;
+        max-width: 650px;       /* 読みやすい幅に制限 */
+        margin: 0 auto;         /* 中央に寄せる */
+    }
+    .philosophy p {
+        line-height: 2.2; 
+        color: #666; 
+        font-size: 1.05rem; 
+        margin: 0;
+        display: inline-block; /* 文の途中で変な改行を防ぐ */
+        text-align: left;      /* PCでは左詰め（全体は中央寄せ） */
+    }
+
+    /* スマホでは中央寄せに戻す（読みやすさ優先） */
+    @media (max-width: 768px) {
+        .philosophy h2 { font-size: 1.5rem; }
+        .philosophy p { text-align: center; font-size: 0.95rem; }
+    }
+</style>
+
 <main class="container">
     <div class="section-title"><h2>SERVICE</h2><div class="line"></div></div>
-    <a href="service/" class="nav-card"><h3>事業内容を詳しく見る</h3></a>
+    <a href="service/" class="nav-card"><h3>運送サービスを詳しく見る</h3></a>
 
     <div class="section-title"><h2>WORKS</h2><div class="line"></div></div>
     <div class="works-list">
-        <div class="works-item"><span class="works-date">2026.</span><span class="works-text">**** **** ****</span></div>
-        <div class="works-item"><span class="works-date">2026.</span><span class="works-text">**** **** ****</span></div>
-        <div class="works-item"><span class="works-date">2026.</span><span class="works-text">**** **** ****</span></div>
+        <div class="works-item"><span class="works-date">2026.02</span><span class="works-text"></span></div>
+        <div class="works-item"><span class="works-date">2026.01</span><span class="works-text"></span></div>
     </div>
 
     <div class="section-title"><h2>RECRUIT</h2><div class="line"></div></div>
-    <a href="recruit/" class="nav-card"><h3>採用情報はこちら</h3></a>
+    <a href="recruit/" class="nav-card"><h3>ドライバー採用情報はこちら</h3></a>
 
     <div class="section-title"><h2>COMPANY</h2><div class="line"></div></div>
     <table class="company-table">
         <tr><th>会社名</th><td>株式会社NVS</td></tr>
-        <tr><th>代表者</th><td></td></tr>
+        <tr><th>総裁</th><td>佐久間亮太</td></tr>
+        <tr><th>本部長</th><td>滝口</td></tr>
         <tr><th>法人番号</th><td>2040001135153</td></tr>
         <tr><th>所在地</th><td>千葉県千葉市若葉区桜木北2-26-43</td></tr>
-        <tr><th>事業内容</th><td>運送業 / 建設業 / 自動車販売業 / アートバルーン事業</td></tr>
+        <tr><th>事業内容</th><td>一般貨物自動車運送業 / 引越事業 / 産業廃棄物収集運搬業</td></tr>
     </table>
 </main>
 

@@ -5,45 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>事業内容 | 株式会社NVS</title>
     <style>
-        /* --- 基本設定 --- */
-        body { font-family: "Helvetica Neue", Arial, sans-serif; margin: 0; padding-top: 100px; background-color: #f8f9fa; color: #333; line-height: 1.8; }
-        
+        /* --- 基本設定（ホームと統一） --- */
+        body { font-family: sans-serif; margin: 0; padding-top: 70px; background-color: #f9f9f9; color: #333; line-height: 1.6; }
+
+        /* --- ヘッダー（ロゴスタイル統一） --- */
         header {
             background: #1a1a1a; color: white; position: fixed;
             top: 0; width: 100%; height: 70px; z-index: 1000;
             display: flex; align-items: center; justify-content: center;
         }
-        .logo a { font-size: 1.3rem; font-weight: bold; letter-spacing: 2px; color: white; text-decoration: none; }
+        .logo { 
+            display: flex; 
+            align-items: baseline; 
+            letter-spacing: 3px; 
+            color: white;
+            text-decoration: none;
+        }
+        .co-text {
+            font-size: 1.0rem;
+            margin-right: 5px;
+            font-weight: normal;
+        }
+        .nvs-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        #menu-check { display: none; }
+        .menu-icon { position: absolute; right: 20px; cursor: pointer; z-index: 1200; width: 30px; }
+        .menu-icon span { display: block; width: 100%; height: 3px; background: white; margin: 6px 0; transition: 0.3s; }
+        .nav-menu {
+            position: fixed; top: 0; right: -100%;
+            width: 280px; height: 100vh; background: #1a1a1a; padding-top: 80px;
+            list-style: none; margin: 0; transition: 0.5s; z-index: 1100;
+        }
+        .nav-menu li a { display: block; padding: 20px 30px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .nav-menu li a:hover { background: #ff8c00; padding-left: 40px; }
+        #menu-check:checked ~ .nav-menu { right: 0; }
 
         /* --- メインコンテンツ --- */
-        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        .container { max-width: 1000px; margin: auto; padding: 60px 20px; }
         
-        .page-title { text-align: center; margin-bottom: 80px; }
-        .page-title h2 { font-size: 2.5rem; letter-spacing: 5px; margin-bottom: 15px; font-weight: bold; }
+        .page-title { text-align: center; margin-bottom: 60px; }
+        .page-title h2 { font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 15px; font-weight: bold; }
         .page-title .line { width: 40px; height: 4px; background: #ff8c00; margin: 0 auto; }
 
         /* --- 事業セクション --- */
         .service-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 30px;
             margin-bottom: 40px;
         }
 
         .service-card {
             background: white;
             padding: 40px;
-            position: relative;
-            transition: 0.4s;
             border: 1px solid #eee;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-top: 0;
             margin-bottom: 20px;
             color: #1a1a1a;
-            border-bottom: 1px solid #ff8c00;
+            border-bottom: 2px solid #ff8c00;
             display: inline-block;
             padding-bottom: 5px;
         }
@@ -55,10 +82,19 @@
         }
 
         .service-item-list li {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #555;
-            margin-bottom: 8px;
-            padding-left: 0;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .service-item-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #ff8c00;
+            font-size: 0.7rem;
+            top: 0.2rem;
         }
 
         /* スマホ対応 */
@@ -72,63 +108,79 @@
         .footer-nav { text-align: center; margin: 60px 0; }
         .btn-home { text-decoration: none; color: #888; font-size: 0.9rem; transition: 0.3s; }
         .btn-home:hover { color: #ff8c00; }
+
+        footer { background: #1a1a1a; color: #888; text-align: center; padding: 40px 20px; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo"><a href="../">株式会社NVS</a></div>
+        <a href="../index.html" class="logo">
+            <span class="co-text">株式会社</span><span class="nvs-text">NVS</span>
+        </a>
+        <input type="checkbox" id="menu-check">
+        <label for="menu-check" class="menu-icon"><span></span><span></span><span></span></label>
+        <ul class="nav-menu">
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="index.html">事業内容</a></li>
+            <li><a href="../recruit/">採用情報</a></li>
+            <li><a href="../contact/">お問い合わせ</a></li>
+        </ul>
     </header>
 
     <main class="container">
         <div class="page-title">
             <h2>SERVICES</h2>
             <div class="line"></div>
+            <p style="font-size: 0.9rem; color: #666; margin-top: 20px;">確かな技術と誠実な対応で、安心の物流品質をご提供いたします。</p>
         </div>
+<div class="service-group">
+    <section class="service-card">
+        <h3>一般貨物運送事業</h3>
+        <ul class="service-item-list">
+            <li>スポット・チャーター・定期便対応</li>
+            <li>千葉県内および関東近郊への配送</li>
+            <li>全車両GPS管理による迅速な配車</li>
+            <li>貨物保険加入による万全の補償体制</li>
+        </ul>
+    </section>
 
-        <div class="service-group">
-            <section class="service-card">
-                <h3>運送業</h3>
-                <ul class="service-item-list">
-                    <li>一般貨物自動車運送業</li>
-                    <li>法人・個人 引っ越し事業</li>
-                    <li>産業廃棄物収集運搬</li>
-                </ul>
-            </section>
+    <section class="service-card">
+        <h3>引越事業</h3>
+        <ul class="service-item-list">
+            <li>単身・ファミリー向け引越サービス</li>
+            <li>法人様の事務所移転・レイアウト変更</li>
+            <li>不用品回収・お荷物の一時預かり</li>
+            <li>養生徹底による丁寧な搬入搬出作業</li>
+        </ul>
+    </section>
 
-            <section class="service-card">
-                <h3>建設業</h3>
-                <ul class="service-item-list">
-                    <li>エアコン・家電設置</li>
-                    <li>ハウスクリーニング・エアコンクリーニング</li>
-                    <li>足場 リース販売及び施工</li>
-                    <li>仮囲い リース販売及び施工</li>
-                </ul>
-            </section>
+    <section class="service-card">
+        <h3>産業廃棄物収集運搬</h3>
+        <ul class="service-item-list">
+            <li>千葉県内における収集運搬業許可取得</li>
+            <li>マニフェストに基づいた適正な処理</li>
+            <li>建築現場・店舗の廃材を定期回収</li>
+            <li>環境への配慮と法令遵守の徹底</li>
+        </ul>
+    </section>
 
-            <section class="service-card">
-                <h3>アートバルーン事業</h3>
-                <ul class="service-item-list">
-                    <li>イベント会場・飲食店 装飾</li>
-                    <li>商業施設・結婚式業 装飾</li>
-                </ul>
-            </section>
-
-            <section class="service-card">
-                <h3>自動車販売業</h3>
-                <ul class="service-item-list">
-                    <li>各種新車・中古車販売</li>
-                    <li>車検・点検・鈑金塗装</li>
-                    <li>一般整備・修理</li>
-                    <li>チューニング</li>
-                </ul>
-            </section>
-        </div>
-
+    <section class="service-card">
+        <h3>物流ソリューション</h3>
+        <ul class="service-item-list">
+            <li>物流コストの削減シミュレーション</li>
+            <li>最適な配送ルート・車両サイズの提案</li>
+            <li>緊急案件への柔軟なバックアップ体制</li>
+            <li>本部長直轄による徹底した安全運行管理</li>
+        </ul>
+    </section>
+</div>
         <div class="footer-nav">
             <a href="../" class="btn-home">← ホームへ戻る</a>
         </div>
     </main>
+
+    <footer><p>&copy; 2026 株式会社NVS. All Rights Reserved.</p></footer>
 
 </body>
 </html>
