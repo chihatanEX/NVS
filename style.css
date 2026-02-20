@@ -217,3 +217,96 @@ header {
         margin-bottom: 30px;
     }
 }
+/* アコーディオン全体の枠 */
+.recruit-card {
+    background: white;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* クリックエリア */
+.recruit-summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 25px;
+    outline: none;
+}
+.recruit-summary::-webkit-details-marker { display: none; }
+
+.summary-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.summary-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* V字アイコン */
+.v-icon {
+    width: 40px;
+    height: 40px;
+    background: #f4f4f4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.v-icon::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #888;
+    border-bottom: 2px solid #888;
+    transform: rotate(45deg);
+    margin-top: -4px;
+}
+
+/* 開いた時にVを回転させる */
+details[open] .v-icon {
+    transform: rotate(180deg);
+    background: #ff8c00;
+}
+details[open] .v-icon::after {
+    border-color: white;
+}
+
+/* 詳細ボタン（Vの横に配置） */
+.detail-btn {
+    background: #ff8c00;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* にょっと出る中身 */
+.recruit-details-content {
+    padding: 0 25px 25px 25px;
+    border-top: 1px solid #f9f9f9;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* テーブルスタイル */
+.spec-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+.spec-table th { width: 28%; background: #fafafa; padding: 12px; border: 1px solid #eee; text-align: left; font-size: 0.9rem; }
+.spec-table td { padding: 12px; border: 1px solid #eee; font-size: 0.95rem; }
+
+@media (max-width: 768px) {
+    .summary-inner { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .spec-table th, .spec-table td { display: block; width: 100%; }
+}

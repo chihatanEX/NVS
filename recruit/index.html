@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    
     <meta name="robots" content="noindex,nofollow">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>採用情報 | 株式会社NVS</title>
     <style>
-        /* padding-topを線の厚み分（76px）に調整 */
         body { font-family: sans-serif; margin: 0; padding-top: 76px; background-color: #f9f9f9; color: #333; line-height: 1.6; }
         
-        /* 統一デザイン：黒枠・白隙間・オレンジライン */
         header {
             background: #1a1a1a; color: white; position: fixed;
             top: 0; width: 100%; height: 70px; z-index: 1000;
@@ -26,15 +22,8 @@
             color: white;
             text-decoration: none;
         }
-        .co-text {
-            font-size: 1.0rem;
-            margin-right: 5px;
-            font-weight: normal;
-        }
-        .nvs-text {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
+        .co-text { font-size: 1.0rem; margin-right: 5px; font-weight: normal; }
+        .nvs-text { font-size: 1.8rem; font-weight: bold; }
 
         #menu-check { display: none; }
         .menu-icon { position: absolute; right: 20px; cursor: pointer; z-index: 1200; width: 30px; }
@@ -56,49 +45,76 @@
 
         .category-section { margin-bottom: 60px; }
         .category-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
+            display: flex; align-items: center; margin-bottom: 25px;
+            border-bottom: 2px solid #333; padding-bottom: 10px;
         }
         .category-header h3 {
-            font-size: 1.5rem;
-            margin: 0;
-            background: #333;
-            color: white;
-            padding: 5px 20px;
-            border-radius: 2px 2px 0 0;
+            font-size: 1.5rem; margin: 0; background: #333;
+            color: white; padding: 5px 20px; border-radius: 2px 2px 0 0;
         }
 
         .recruit-card {
-            background: white; border: 1px solid #eee; padding: 25px;
-            margin-bottom: 20px; display: flex; justify-content: space-between;
-            align-items: center; position: relative; transition: 0.4s; overflow: hidden;
+            background: white; border: 1px solid #eee;
+            margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 8px; overflow: hidden;
         }
-        .recruit-card::after {
-            content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px;
-            background: #ff8c00; transform: scaleX(0); transition: 0.4s;
-        }
-        .recruit-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-        .recruit-card:hover::after { transform: scaleX(1); }
 
-        .recruit-info h4 { margin: 0 0 12px 0; font-size: 1.2rem; color: #1a1a1a; }
-        .recruit-info p { margin: 4px 0; color: #666; font-size: 0.9rem; }
-        .recruit-info strong { color: #333; margin-right: 5px; }
+        .recruit-summary {
+            list-style: none; cursor: pointer; padding: 20px 25px; outline: none;
+        }
+        .recruit-summary::-webkit-details-marker { display: none; }
+
+        .summary-inner { display: flex; align-items: center; justify-content: space-between; }
+        .summary-left { display: flex; align-items: center; gap: 20px; }
+
+        .v-icon {
+            width: 40px; height: 40px; background: #f4f4f4;
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; transition: 0.3s; flex-shrink: 0;
+        }
+        .v-icon::after {
+            content: ""; width: 8px; height: 8px;
+            border-right: 2px solid #888; border-bottom: 2px solid #888;
+            transform: rotate(45deg); margin-top: -4px;
+        }
+
+        details[open] .v-icon { transform: rotate(180deg); background: #ff8c00; }
+        details[open] .v-icon::after { border-color: white; }
+
+        .detail-btn {
+            background: #ff8c00; color: white; padding: 6px 15px;
+            border-radius: 4px; font-size: 0.8rem; font-weight: bold; white-space: nowrap;
+        }
+
+        .recruit-details-content {
+            padding: 0 25px 25px 25px; border-top: 1px solid #f9f9f9;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .spec-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .spec-table th {
+            width: 28%; background: #fafafa; padding: 12px;
+            border: 1px solid #eee; text-align: left; font-size: 0.9rem;
+        }
+        .spec-table td { padding: 12px; border: 1px solid #eee; font-size: 0.95rem; color: #333; }
 
         .btn-recruit {
-            background: #ff8c00; color: white; padding: 12px 25px;
+            display: block; background: #ff8c00; color: white; padding: 12px;
             text-decoration: none; font-weight: bold; border-radius: 4px;
-            transition: 0.3s; white-space: nowrap; font-size: 0.9rem;
+            text-align: center; transition: 0.3s; margin-top: 10px;
         }
         .btn-recruit:hover { background: #e67e00; }
 
         @media (max-width: 768px) {
-            .recruit-card { flex-direction: column; align-items: flex-start; }
-            .btn-recruit { margin-top: 20px; width: 100%; text-align: center; box-sizing: border-box; }
-            .category-header h3 { font-size: 1.2rem; }
-            .page-title h2 { font-size: 2.0rem; }
+            .summary-inner { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .detail-btn { width: 100%; text-align: center; box-sizing: border-box; }
+            .spec-table th, .spec-table td { display: block; width: 100%; }
+            .spec-table th { border-bottom: none; }
         }
 
         .footer-nav { text-align: center; margin: 60px 0; }
@@ -106,6 +122,31 @@
         .btn-home:hover { color: #ff8c00; }
 
         footer { background: #1a1a1a; color: #888; text-align: center; padding: 40px 20px; font-size: 0.8rem; }
+
+        /* タブ切り替え全体のスタイル */
+        .recruit-tabs {
+            display: flex; gap: 10px; margin-bottom: 30px; overflow-x: auto;
+            padding-bottom: 10px; -webkit-overflow-scrolling: touch;
+        }
+        .tab-input { display: none; }
+        .tab-label {
+            padding: 12px 25px; background: #eee; color: #666; cursor: pointer;
+            font-weight: bold; border-radius: 50px; white-space: nowrap; transition: 0.3s;
+        }
+        #tab1:checked ~ .recruit-tabs label[for="tab1"],
+        #tab2:checked ~ .recruit-tabs label[for="tab2"],
+        #tab3:checked ~ .recruit-tabs label[for="tab3"] {
+            background: #ff8c00; color: white;
+        }
+        .tab-content {
+            display: none; background: white; border: 1px solid #eee;
+            padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); animation: slideUp 0.4s ease;
+        }
+        #tab1:checked ~ #content1, #tab2:checked ~ #content2, #tab3:checked ~ #content3 { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .job-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ff8c00; padding-bottom: 15px; margin-bottom: 25px; }
+        .job-title h4 { margin: 0; font-size: 1.5rem; color: #1a1a1a; }
+        @media (max-width: 768px) { .job-header { flex-direction: column; align-items: flex-start; gap: 15px; } }
     </style>
 </head>
 <body>
@@ -138,79 +179,68 @@
         </p>
     </div>
 
-    <section class="category-section">
-        <div class="category-header">
-            <h3>中途採用</h3>
-        </div>
-        
-        <div class="recruit-card">
-            <div class="recruit-info">
-                <h4>◎個室寮◎トラックドライバー大量募集</h4>
-                <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
-                <p><strong>勤務地：</strong>千葉県千葉市</p>
-            </div>
-            <a href="https://forms.gle/xKyV1Eyr5hcYRZRZ7" target="_blank" class="btn-recruit">応募フォームへ</a>
-        </div>
+    <input type="radio" name="recruit-tab" id="tab1" class="tab-input" checked>
+    <input type="radio" name="recruit-tab" id="tab2" class="tab-input">
+    <input type="radio" name="recruit-tab" id="tab3" class="tab-input">
 
-        <div class="recruit-card">
-            <div class="recruit-info">
-                <h4>◎個室寮◎トラックドライバー大量募集</h4>
-                <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
-                <p><strong>勤務地：</strong>千葉県柏市</p>
+    <div id="content1" class="tab-content">
+        <div class="job-header">
+            <div class="job-title">
+                <span class="recruit-tag" style="background:#333; color:#fff; padding:2px 8px; font-size:0.8rem;">正社員</span>
+                <h4>トラックドライバー募集</h4>
             </div>
-            <a href="https://forms.gle/xKyV1Eyr5hcYRZRZ7" target="_blank" class="btn-recruit">応募フォームへ</a>
+            <a href="https://forms.gle/CsKQK9KH5LpWHuqx7" class="btn-recruit" target="_blank">応募する</a>
         </div>
-    </section>
+        <p style="background: #fff8f0; padding: 15px; border-left: 4px solid #ff8c00; font-weight: bold; color: #d35400;">
+            「新しい場所で、心機一転スタートしたい」そんなあなたの想いに寄り添います。<br>
+            生活家電付きの寮や充実のサポート体制を整えて、あなたが安心して長く働ける環境を用意しています。
+        </p>
 
-    <section class="category-section">
-        <div class="category-header">
-            <h3>新卒採用</h3>
-        </div>
-            
-        <div class="recruit-card">
-            <div class="recruit-info">
-                <h4>◎個室寮◎トラックドライバー大量募集</h4>
-                <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
-                <p><strong>勤務地：</strong>千葉県千葉市</p>
-            </div>
-            <a href="https://forms.gle/xKyV1Eyr5hcYRZRZ7" target="_blank" class="btn-recruit">応募フォームへ</a>
-        </div>
+        </p>
+        <table class="spec-table">
+            <tr><th>仕事内容</th>
+                <td>
+                    短距離・中距離・長距離<br>
+                    ハイエース・2tトラック・4tトラック<br>
+                    様々な働き方があります！<br>
+                    時間帯も様々です！<br>
+                    仕事をしながら自分の時間も大切に！<br>
 
-        <div class="recruit-card">
-            <div class="recruit-info">
-                <h4>◎個室寮◎トラックドライバー大量募集</h4>
-                <p><strong>給与：</strong>月給 280,000円〜360,000円</p>
-                <p><strong>勤務地：</strong>千葉県柏市</p>
-            </div>
-            <a href="https://forms.gle/xKyV1Eyr5hcYRZRZ7" target="_blank" class="btn-recruit">応募フォームへ</a>
-        </div>
-    </section>
+                    ※業界未経験でも始められます！
+                </td></tr>
+            <tr><th>対象となる方</th>
+                <td>
+                    未経験OK<br>
+                    経験者優遇<br>
+                    運転免許証必須<br>
+            </td></tr>
+            <tr><th>勤務地</th><td>千葉県千葉市若葉区桜木北2-26-43</td></tr>
+            <tr><th>勤務時間</th><td>仕事内容により異なります。</td></tr>
+            <tr><th>休日休暇</th><td>週1～2日</td></tr>
+            <tr><th>給与</th>
+                <td>
+                    月給 250,000〜400,00円（能力・実績考慮）<br>
 
-    <section class="category-section">
-        <div class="category-header">
-            <h3>アルバイト・パート</h3>
-        </div>
+                    ○使用期間(3ヶ月)<br>
+                    月給250,000円～300,000円
+                </td></tr>
+            <tr><th>福利厚生・サポート・人材</th>
+                <td>
+                    即入居可（寮費：初月無料）<br>
+                    交通費支給（規定あり・1ヶ月後支給）<br>
+                    携帯電話レンタル可<br>
+                    社員寮あり40,000円/月(家具家電付き)<br>
+                    駅から徒歩５分<br>
+                    周辺商業施設多数あり<br>
+                    日払いあり(1日3,000円)<br>
+                    作業着貸与あり<br>
+                    資格支援制度あり<br>
+                    所持金ゼロOK<br>
+                    未経験者大歓迎<br>
+            </td></tr>
+        </table>
+    </div>
 
-        <div class="recruit-card">
-            <div class="recruit-info">
-                <h4>ドライバー助手募集!未経験OK</h4>
-                <p><strong>給与：</strong>日給 11,000円〜13,000円</p>
-                <p><strong>勤務地：</strong>千葉県千葉市</p>
-                <p><strong>時間：</strong>07:30～16:30</p>
-            </div>
-            <a href="https://forms.gle/xKyV1Eyr5hcYRZRZ7m" target="_blank" class="btn-recruit">応募フォームへ</a>
-        </div>
-
-        <div class="recruit-card">
-            <div class="recruit-info">
-                <h4>配送ドライバー募集!</h4>
-                <p><strong>給与：</strong>日給 12,000円〜15,000円</p>
-                <p><strong>勤務地：</strong>東京都江東区</p>
-                <p><strong>時間：</strong>07:30～16:30</p>
-            </div>
-            <a href="https://forms.gle/xKyV1Eyr5hcYRZRZ7" target="_blank" class="btn-recruit">応募フォームへ</a>
-        </div>
-    </section>
 
     <div class="footer-nav">
         <a href="../" class="btn-home">← ホームへ戻る</a>
